@@ -1,4 +1,6 @@
-const mockManagers = [
+import { Manager, Department } from '@/types/form';
+
+export const mockManagers: Manager[] = [
   { id: 'ENG001', name: 'Alice Johnson', department: 'Engineering' },
   { id: 'ENG002', name: 'Tanvir Ahamed', department: 'Engineering' },
   { id: 'ENG003', name: 'Lisa Wong', department: 'Engineering' },
@@ -15,7 +17,7 @@ const mockManagers = [
   { id: 'FIN003', name: 'Nadia Rahman', department: 'Finance' },
 ];
 
-const skillsByDepartment = {
+export const skillsByDepartment: Record<Department, string[]> = {
   Engineering: [
     'JavaScript',
     'TypeScript',
@@ -66,4 +68,17 @@ const skillsByDepartment = {
     'Expense Reporting',
     'Cash Flow Management',
   ],
+};
+
+// Helper functions
+export const getManagersByDepartment = (department: Department): Manager[] => {
+  return mockManagers.filter(manager => manager.department === department);
+};
+
+export const getManagerById = (id: string): Manager | undefined => {
+  return mockManagers.find(manager => manager.id === id);
+};
+
+export const getSkillsByDepartment = (department: Department): string[] => {
+  return skillsByDepartment[department] || [];
 };
